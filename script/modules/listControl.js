@@ -4,14 +4,6 @@ import {
   changeStorageText,
 } from './storageControl.js';
 
-const deleteTask = (id, key) => {
-  removeStorage(id, key);
-};
-
-const completeTask = (id, key) => {
-  changeStorageStatus(id, key);
-};
-
 export const taskControl = (title, tbody) => {
   tbody.addEventListener('click', (e) => {
     const target = e.target;
@@ -23,11 +15,11 @@ export const taskControl = (title, tbody) => {
       tr.cells[1].classList.add('text-decoration-line-through');
       tr.cells[2].innerHTML = 'Выполнена';
       target.closest('.btn-success').disabled = 'true';
-      completeTask(id, title);
+      changeStorageStatus(id, title);
     } else if (target.closest('.btn-danger')) {
       const sure = confirm('Вы уверены, что хотите удалить задачу?');
       if (sure) {
-        deleteTask(id, title);
+        removeStorage(id, title);
         tr.remove();
         let i = 1;
 
