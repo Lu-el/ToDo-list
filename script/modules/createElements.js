@@ -154,7 +154,7 @@ const createRow = ({trNumber, text, status, id, importance}) => {
       type: 'button',
       text: 'Завершить',
       disabled:
-        status === 'Выполнена' ? true : false,
+        status === 'Выполнена' ? 'true' : false,
     },
     {
       className: 'btn btn-primary',
